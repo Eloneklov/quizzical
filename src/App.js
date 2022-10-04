@@ -46,7 +46,6 @@ export default function App() {
       answers={question.answers}
       key={v4()}
       id={v4()}
-      selected={false}
     />
   ))
 

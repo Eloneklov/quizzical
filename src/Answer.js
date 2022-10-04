@@ -8,7 +8,7 @@ export default function Answer(props) {
         <div>
             <button
                 onClick={() => props.handleClick(props.id)}
-                className={props.selected ? "answer--button--selected" : "answer--button"}
+                className={props.isActive ? "answer--button--selected" : "answer--button"}
             >
                 {props.answer}
             </button>

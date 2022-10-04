@@ -5,26 +5,40 @@ import './style.css'
 
 export default function Question(props) {
 
-    const [answerChecked, setAnswerChecked] = React.useState(props.selected)
     const [question, setQuestion] = React.useState(props)
-    const [answer, setAnswer] = React.useState([])
+    const [answer, setAnswer] = React.useState(generateAnswer())
 
 
-    const answers = question.answers.map(answer => (
+    function generateAnswer() {
+        const answerList = []
+        question.answers.map(answer => (
+            answerList.push({
+                answer: answer,
+                id: v4(),
+                isActive: false
+            })
+        ) )
+        
+        return answerList 
+    }
+
+    
+
+    const answers = answer.map(answer => (
         <Answer
-            answer={answer}
+            answer={answer.answer}
             key={v4()}
-            id={v4()}
-            selected={answerChecked}
+            id={answer.id}
             handleClick={handleClick}
+            isActive={answer.isActive}
         />
     ))
 
 
     function handleClick(id) {
-         setAnswer(answers.map(answer => (
-            id === answer.props.id ? {...answer, selected: !answer.selected}: console.log(answers)
-        ))) 
+        setAnswer(answer.map(answer => {
+            return id === answer.id ? { ...answer, isActive: !answer.isActive } : answer
+        }))
     }
 
     return (

@@ -37,6 +37,7 @@ export default function Question(props) {
 
     function handleClick(id) {
         setAnswer(answer.map(answer => {
+            answer.isActive = false
             return id === answer.id ? { ...answer, isActive: !answer.isActive } : answer
         }))
     }

@@ -39,6 +39,7 @@ export default function App() {
     setQuestions(allShuffledQuestions)
   }
 
+console.log(newQuestions)
 
   const setQuizElements = questions.map(question => (
     <Question
